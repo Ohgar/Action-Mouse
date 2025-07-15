@@ -1,0 +1,23 @@
+## Interface:  110107, 110200
+## Version: 3.1.2
+
+## Title: ActionMouse
+
+## Author: OHGAR
+
+##SavedVariablesPerCharacter: ActionMouseSettings
+
+##IconTexture: Interface/AddOns/ActionMouse/action_mouse_icon_texture.png
+
+Menu.lua
+BagAutomation.lua
+MapAutomation.lua
+PanelAutomation.lua
+PopupAutomation.lua
+CombatAutomation.lua
+LootAutomation.lua
+ReticleManager.lua
+StateManager.lua
+SpellAutomation.lua
+DeathAutomation.lua
+Main.lua
