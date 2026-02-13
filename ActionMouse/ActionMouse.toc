@@ -1,5 +1,5 @@
-## Interface:  110207, 120001
-## Version: 3.1.2
+## Interface:  120000, 120001
+## Version: 4.0.1
 
 ## Title: ActionMouse
 
@@ -20,4 +20,5 @@ ReticleManager.lua
 StateManager.lua
 SpellAutomation.lua
 DeathAutomation.lua
+TargetTips.lua
 Main.lua

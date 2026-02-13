@@ -10,7 +10,7 @@ regenFrame:SetScript("OnEvent", function(self, event)
     if event == "PLAYER_REGEN_DISABLED" then
 		ActionMouse.isCombat = true
 		if ActionMouseSettings.Keybind then
-			ActionMouse.reticleButton:EnableMouse(false)
+			ActionMouse.ReticleButton:EnableMouse(false)
 		end
 		if ActionMouseSettings.AutoStopCombat and IsMouselooking() then
 			ActionMouse.Deactivate()

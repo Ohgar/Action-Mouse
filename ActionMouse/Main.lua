@@ -13,13 +13,18 @@ end
 --SET CURSOR RETICLE
 local function SetCursorRet()
 	local cursorX, cursorY = GetCursorPosition()
+
 	ActionMouse.SetCursorReticle(cursorX, cursorY)
+
 	MouselookStart()
-	if not ActionMouse.isCombat then ActionMouse.reticleButton:SetAlpha(1) end
+
+	if not ActionMouse.isCombat then ActionMouse.ReticleButton:SetAlpha(1) end
+
 	if ActionMouseSettings.HideRet then
-		ActionMouse.reticleButton:Hide()
+		ActionMouse.ReticleButton:Hide()
 	end
-	ActionMouse.reticleButton:EnableMouse(true)
+
+	ActionMouse.ReticleButton:EnableMouse(true)
 end
 
 --TOGGLE KEYBIND ACTIVATION
@@ -27,9 +32,9 @@ function ActionMouse.ToggleKeybindActivation()
 	if ActionMouseSettings.Keybind and IsMouselooking() then
 		ActionMouse.isActive = false
 		if ActionMouse.isCombat then
-			ActionMouse.reticleButton:SetAlpha(0)			
+			ActionMouse.ReticleButton:SetAlpha(0)			
 		else
-			ActionMouse.reticleButton:Hide()
+			ActionMouse.ReticleButton:Hide()
 		end		
 		MouselookStop()
 	elseif ActionMouseSettings.Keybind and not IsMouselooking() then
@@ -47,7 +52,7 @@ function ActionMouse.Activate()
 	end	
 
 	if ActionMouseSettings.Keybind and ActionMouseSettings.HideRet then
-		ActionMouse.reticleButton:Hide()		
+		ActionMouse.ReticleButton:Hide()		
 	elseif ActionMouseSettings.Keybind then
 		SetCursorRet()
 	end
@@ -59,11 +64,11 @@ function ActionMouse.Deactivate()
 	ActionMouse.isActive = false	
 
 	if ActionMouseSettings.Click then
-		ActionMouse.reticleButton:Show()
+		ActionMouse.ReticleButton:Show()
 	end
 
 	if ActionMouseSettings.Keybind then
-		ActionMouse.reticleButton:Hide()
+		ActionMouse.ReticleButton:Hide()
 	end
 end
 
@@ -75,11 +80,16 @@ onEnterWorld:SetScript("OnEvent", function(self, event, ...)
 	ActionMouse.isMenuOpen = false
 	if event == "PLAYER_ENTERING_WORLD" then
 		if ActionMouseSettings.Click then
-		ActionMouse.SetClickReticle(false) --counters something preventing display of reticle
+			ActionMouse.SetClickReticle(false) --counters something preventing display of reticle
 		end
 
 		if ActionMouseSettings.Keybind and not ActionMouseSettings.HideRet then
 			SetCursorRet()
+			ActionMouse.Activate()
+
+			if not ActionMouseSettings.MouselookOnEnterWorld then
+				ActionMouse.Deactivate()
+			end
 		end
 
 	elseif event == "PLAYER_LOGOUT" then
